@@ -38,7 +38,7 @@ resource "aws_instance" "web_server" {
 
     # Attach the key pair and security group
     key_name = aws_key_pair.deployer_key.key_name
-    vpc_security_group_ids = [aws_security_group.web_sg.id]
+    vpc_security_group_ids = [aws_security_group.test_sg.id]
 
     # This script runs on instance start-up to install Docker
     user_data = <<-EOF
