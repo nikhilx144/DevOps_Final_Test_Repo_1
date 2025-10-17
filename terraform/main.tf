@@ -36,9 +36,11 @@ resource "aws_instance" "web_server" {
     instance_type = var.instance_type
     iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
 
+    # Attach the key pair and security group
     key_name = aws_key_pair.deployer_key.key_name
-    vpc_security_group_ids = [aws_security_group.test_sg.id]
+    vpc_security_group_ids = [aws_security_group.web_sg.id]
 
+    # This script runs on instance start-up to install Docker
     user_data = <<-EOF
                 #!/bin/bash
                 sudo dnf update -y
@@ -49,10 +51,9 @@ resource "aws_instance" "web_server" {
                 EOF
 
     tags = {
-        Name = "DevOpsCICDPrac"
+        Name = "WebAppServerDevOpsFinalPrac"
     }
 }
-
 
 # IAM Role that allows the EC2 service to assume it
 resource "aws_iam_role" "ec2_role" {
