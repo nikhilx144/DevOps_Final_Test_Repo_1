@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magazine Style Home</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        background-color: #d3d3d380;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      main {
+        width: 90%;
+        margin: 20px auto;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "h"
+          "l"
+          "s"
+          "a"
+          "f";
+      }
+
+      .hero {
+        grid-area: h;
+        border-radius: 10px;
+      }
+
+      figcaption {
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 0.85rem;
+        margin-top: 5px;
+      }
+
+      img {
+        height: auto;
+        object-fit: cover;
+        width: 100%;
+        border-radius: 10px;
+        display: block;
+      }
+
+      .lead img {
+        flex: 2;
+        min-height: 0;
+      }
+
+      .lead {
+        grid-area: l;
+        border-radius: 10px;
+        padding-bottom: 20px;
+        flex-direction: column;
+        background-color: white;
+        padding: 15px;
+        display: flex;
+        gap: 20px;
+      }
+
+      .lead .text-content {
+        /* border: 2px solid black; */
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        line-height: 40px;
+      }
+
+      .secondary {
+        display: flex;
+        flex-direction: column;
+        grid-area: s;
+        border-radius: 10px;
+        gap: 50px;
+        padding-bottom: 10px;
+      }
+
+      .first-secondary-story,
+      .second-secondary-story {
+        flex: 1;
+        line-height: 30px;
+      }
+
+      aside {
+        grid-area: a;
+        border-radius: 10px;
+        padding-bottom: 20px;
+        position: relative;
+        background-color: white;
+        padding: 15px;
+        display: flex;
+        gap: 10px;
+        padding-left: 20px;
+      }
+
+      aside blockquote {
+        margin: 0 0 1rem 0;
+        padding-left: 0.75rem;
+        border-left: 4px solid #0066cc;
+        color: #333;
+        font-style: italic;
+      }
+
+      .hashtags li {
+        display: inline-block;
+        background-color: #d3d3d380;
+        margin: 5px;
+        width: min-content;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 12px;
+      }
+
+      footer {
+        grid-area: f;
+        border-radius: 10px;
+        background-color: #222;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 50px;
+        font-size: 0.85rem;
+      }
+
+      @media (min-width: 640px) and (max-width: 1023px) {
+        main {
+          grid-template-areas:
+            "h"
+            "l"
+            "s"
+            "a"
+            "f";
+        }
+      }
+
+      @media all and (min-width: 1024px) {
+        main {
+          grid-template-columns: repeat(3, 1fr) 0.5fr;
+          grid-template-rows: auto auto auto 50px;
+          grid-template-areas:
+            "h h h h"
+            "l l s a"
+            "l l s a"
+            "f f f f";
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <main>
+        <section class="hero">
+          <figure>
+            <img
+              src="https://news.miami.edu/_assets/images-stories/2020/12/distractionmag-hero-940x529.jpg"
+              alt="hero-img"
+            />
+            <figcaption>
+              Breaking news: cover photo from Distraction Magazine
+            </figcaption>
+          </figure>
+        </section>
+        <section class="lead">
+          <figure>
+            <img
+              src="https://i.mdel.net/i/db/2017/3/670904/670904-800w.jpg"
+              alt="lead-img"
+            />
+            <figcaption>Exclusive lead story photo</figcaption>
+          </figure>
+          <div class="text-content">
+            <h2>Main Lead Story</h2>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex natus
+              facere eligendi assumenda suscipit beatae corrupti vitae facilis
+              odio ea? Minus numquam odit cum ea magni ex rerum, aperiam
+              impedit?
+            </p>
+          </div>
+        </section>
+        <section class="secondary">
+          <div class="first-secondary-story">
+            <figure>
+              <img
+                src="https://media.hero-magazine.com/wp-content/uploads/2022/05/14081117/Cover_AMANDA_SEYFRIED_UPC_HEROINE-16_2000px-1-aspect-ratio-1000-1250.jpg"
+                alt="secondary-img1"
+              />
+              <figcaption>Secondary story: Hero Magazine cover</figcaption>
+            </figure>
+            <div class="text-content">
+              <h3>Secondary Story One</h3>
+              <p>
+                Curabitur in justo sit amet eros bibendum ultricies. Integer
+                vitae sapien a lorem tristique egestas.
+              </p>
+            </div>
+          </div>
+          <div class="second-secondary-story">
+            <figure>
+              <img
+                src="https://i.mdel.net/i/db/2016/12/624750/624750-800w.jpg"
+                alt="secondary-img2"
+              />
+              <figcaption>Secondary story two — editorial</figcaption>
+            </figure>
+            <div class="text-content">
+              <h3>Secondary Story Two</h3>
+              <p>
+                Donec aliquet felis non orci tincidunt, nec luctus odio
+                hendrerit. Mauris in facilisis ligula.
+              </p>
+            </div>
+          </div>
+        </section>
+        <aside>
+          <div class="aside-content">
+            <blockquote>
+              "This is a featured pull-quote to highlight something important."
+            </blockquote>
+            <ul class="hashtags">
+              <li>#Politics</li>
+              <li>#Economy</li>
+              <li>#Culture</li>
+            </ul>
+          </div>
+        </aside>
+        <footer>
+          <p>© 2025 Magazine Layout. All rights reserved.</p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
