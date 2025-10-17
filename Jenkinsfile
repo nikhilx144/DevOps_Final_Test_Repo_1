@@ -23,7 +23,7 @@ pipeline {
             steps {
                 dir('terraform') {
                     // Use the AWS credentials stored in Jenkins
-                    withAWS(credentials: 'aws-credentials', region: AWS_REGION) {
+                    withAWS(credentials: 'aws_credentials', region: AWS_REGION) {
                         // Initialize Terraform and apply the configuration
                         sh 'terraform init'
                         sh 'terraform apply -auto-approve'
@@ -47,7 +47,7 @@ pipeline {
                     # Clean up the installer files so the workspace is fresh for the next run
                     rm -rf aws awscliv2.zip
                 '''
-                withAWS(credentials: 'aws-credentials', region: AWS_REGION) {
+                withAWS(credentials: 'aws_credentials', region: AWS_REGION) {
                     sh "docker build -t ${ECR_REPO_URI}:${BUILD_NUMBER} ."
                     sh "aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REPO_URI}"
                     sh "docker push ${ECR_REPO_URI}:${BUILD_NUMBER}"
